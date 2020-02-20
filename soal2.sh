@@ -25,6 +25,6 @@ crtime=($(genesis "$file.txt"))
 crhour=$(echo ${crtime[4]} | head -c2)
 #echo "$file $crhour ${crtime[*]}"
 shift=$(chr "$(($crhour + 65))")-ZA-$(chr "$(($crhour + 64))")$(chr "$(($crhour + 97))")-za-$(chr "$(($crhour + 96))")
-CC=$(echo $file | tr [A-Za-z] [$shift])
+CC=$(echo $file | tr A-Za-z $shift)
 #echo "$file.txt" "$CC.txt"
 mv "$file.txt" "$CC.txt"
