@@ -13,7 +13,6 @@ chr() {
 }
 #main
 file=$(echo $1 | tr -dc 'a-zA-Z')
-echo "Decrypting..."
 crtime=($(genesis "$file.txt"))
 crhour=$(echo ${crtime[4]} | head -c2)
 shift=$(chr "$(($crhour + 65))")-ZA-$(chr "$(($crhour + 64))")$(chr "$(($crhour + 97))")-za-$(chr "$(($crhour + 96))")
