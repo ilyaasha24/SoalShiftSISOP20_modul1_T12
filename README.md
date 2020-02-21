@@ -50,6 +50,7 @@ laporan tersebut.<br>
 <li>Mengolah <mark>Sample-Superstore.csv</mark> menggunakan <code>awk</code> dengan cara menentukan <em>field separator</em> <code>","</code> <code>-F "\"*,\"*"</code>,  menggunakan hasil dari poin b dengan mengoper variabel <code>state</code> ke dalam <code>awk</code> <code>-v a=${state[1]} -v b=${state[3]}</code>, melewati kolom header <code>FNR&gt;1</code>, jika negara bagian adalah negara bagian dari poin b <code>if($11~a||$11~b)</code> maka digunakan <em>array</em> untuk mengelompokkan keuntungan berdasarkan produk <code>u[$17]+=$21</code>, dan menampilkan setiap elemen dari <em>array</em> tersebut beserta <em>value</em>-nya <code>for(i in u)printf "%5.4f in %s\\n\n",u[i],i</code>,</li>
 <li>Mengurutkan keuntungan dari kecil ke besar menggunakan <code>sort</code> dan <code>-g</code> untuk mengurutkan secara <em>general numerik</em></li>
 <li>Menampilkan sepuluh baris pertama menggunakan <code>head -n10</code></li>
+<li>Menomori per baris menggunakan <code>nl</code> dan menambahkan titik setelah nomor <code>-s"."</code></li>
 <li>Hasil yang berupa 10 produk dengan keuntungan terkecil beserta keuntungannya disimpan pada variabel <code>prod12</code></li>
 </ol>
 <h4 id="hasil">Hasil</h4>
