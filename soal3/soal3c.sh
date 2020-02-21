@@ -13,6 +13,7 @@ for i in "${b[@]}"; do
     [[ -n $skip ]] || c+=("$i")
 done
 #echo ${c[@]}
+mkdir -p duplicate kenangan
 d=$(ls -1 "./duplicate/" | wc -l)
 for i in "${c[@]}"; do
     let d+=1
