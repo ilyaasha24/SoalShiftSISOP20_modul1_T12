@@ -7,7 +7,7 @@ state=($(awk -F "\"*,\"*" -v a=${region[1]} 'FNR>1{if($13~a)u[$11]+=$21}END{for(
 #prod2=($(awk -F "\"*,\"*" -v b="${state[3]}" 'FNR>1{if($11~b)u[$17]+=$21}END{for(i in u)printf "%5.4f in %s \\n\n", u[i], i}' Sample-Superstore.csv | sort -g | head -n10))
 
 #jika digabung state dan product
-prod12=($(awk -F "\"*,\"*" -v a="Texas" -v b="Illinois" -v c="1" 'FNR>1{if($11~a||$11~b)u[$17]+=$21}END{for(i in u)printf "%5.4f in %s\\n\n",u[i],i}' Sample-Superstore.csv | sort -g | head -n10 | nl -s"."
+prod12=($(awk -F "\"*,\"*" -v a=${state[1]} -v b=${state[3]} -v c="1" 'FNR>1{if($11~a||$11~b)u[$17]+=$21}END{for(i in u)printf "%5.4f in %s\\n\n",u[i],i}' Sample-Superstore.csv | sort -g | head -n10 | nl -s"."
 ))
 
 #jika digabung state namun dipisah per product
