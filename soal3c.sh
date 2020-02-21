@@ -3,8 +3,7 @@
 b=($(ls pdkt_kusuma_* | sort))
 grep 'Location:' wget.log | cut -c32-53 | tr -d "_" > location.log
 a=($(paste "./location.log" <(echo -e "pdkt_kusuma_"{1..28}",\n") | tr -d " " | sed 's/\t/,/g' | awk -F "," '{a[$1]=$2}END{for(i in a)print i, a[i]}' | sort -k2 | awk -F " " 'FNR>1{print $2}'))
-#echo ${a[@]}
-#echo ${b[@]}
+#echo ${a[@]} ${b[@]}
 c=()
 for i in "${b[@]}"; do
     skip=
