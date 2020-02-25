@@ -1,8 +1,3 @@
----
-
-
----
-
 <h1 id="soalshiftsisop20_modul1_t12">SoalShiftSISOP20_modul1_T12</h1>
 <p><code>"Repository dibuat untuk memenuhi tugas praktikum mata kuliah sistem operasi tahun 2020."</code></p>
 <p>Anggota :<br>
