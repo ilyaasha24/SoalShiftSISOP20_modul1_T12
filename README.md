@@ -1,3 +1,8 @@
+---
+
+
+---
+
 <h1 id="soalshiftsisop20_modul1_t12">SoalShiftSISOP20_modul1_T12</h1>
 <p><code>"Repository dibuat untuk memenuhi tugas praktikum mata kuliah sistem operasi tahun 2020."</code></p>
 <p>Anggota :<br>
@@ -24,25 +29,25 @@ laporan tersebut.<br>
 <em>Gunakan Awk dan Command pendukung</em></p>
 <h4 id="penyelesaian">Penyelesaian</h4>
 <p><em><strong>a.</strong></em> Wilayah bagian dengan keuntungan paling sedikit</p>
-<p><code>region=($(awk -F "\"*,\"*" 'FNR&gt;1{u[$13]+=$21}END{for(i in u)printf "%6.4f %s \n", u[i], i}' Sample-Superstore.csv | sort -g | head -n1))</code></p>
+<p><code>region=($(awk -F "\"*,\"*" 'FNR&gt;1{u[$13]+=$NF}END{for(i in u)printf "%6.4f %s \n", u[i], i}' Sample-Superstore.csv | sort -g | head -n1))</code></p>
 <ol>
-<li>Mengolah <mark>Sample-Superstore.csv</mark> menggunakan <code>awk</code> dengan cara menentukan <em>field separator</em> <code>","</code> <code>-F "\"*,\"*"</code>, melewati kolom header <code>FNR&gt;1</code>, menggunakan <em>array</em> untuk mengelompokkan keuntungan berdasarkan wilayah bagian <code>u[$13]+=$21</code>, dan menampilkan setiap elemen dari <em>array</em> tersebut beserta <em>value</em>-nya <code>for(i in u)printf "%6.4f %s \n", u[i], i</code>,</li>
+<li>Mengolah <mark>Sample-Superstore.csv</mark> menggunakan <code>awk</code> dengan cara menentukan <em>field separator</em> <code>","</code> <code>-F "\"*,\"*"</code>, melewati kolom header <code>FNR&gt;1</code>, menggunakan <em>array</em> untuk mengelompokkan keuntungan berdasarkan wilayah bagian <code>u[$13]+=$NF</code>, dan menampilkan setiap elemen dari <em>array</em> tersebut beserta <em>value</em>-nya <code>for(i in u)printf "%6.4f %s \n", u[i], i</code>,</li>
 <li>Mengurutkan keuntungan dari kecil ke besar menggunakan <code>sort</code> dan <code>-g</code> untuk mengurutkan secara <em>general numerik</em></li>
 <li>Menampilkan baris pertama menggunakan <code>head -n1</code></li>
 <li>Hasil yang berupa wilayah bagian dengan keuntungan terkecil beserta keuntungannya disimpan pada variabel <code>region</code></li>
 </ol>
 <p><em><strong>b.</strong></em> 2 negara bagian dengan keuntungan paling sedikit pada wilayah bagian dari poin a</p>
-<p><code>state=($(awk -F "\"*,\"*" -v a=${region[1]} 'FNR&gt;1{if($13~a)u[$11]+=$21}END{for(i in u)printf "%6.4f %s \n", u[i], i}' Sample-Superstore.csv | sort -g | head -n2))</code></p>
+<p><code>state=($(awk -F "\"*,\"*" -v a=${region[1]} 'FNR&gt;1{if($13~a)u[$11]+=$NF}END{for(i in u)printf "%6.4f %s \n", u[i], i}' Sample-Superstore.csv | sort -g | head -n2))</code></p>
 <ol>
-<li>Mengolah <mark>Sample-Superstore.csv</mark> menggunakan <code>awk</code> dengan cara menentukan <em>field separator</em> <code>","</code> <code>-F "\"*,\"*"</code>,  menggunakan hasil dari poin a dengan mengoper variabel <code>region</code> ke dalam <code>awk</code> <code>-v a=${region[1]}</code>, melewati kolom header <code>FNR&gt;1</code>, jika wilayah bagian adalah wilayah bagian dari poin a <code>if($13~a)</code> maka digunakan <em>array</em> untuk mengelompokkan keuntungan berdasarkan negara bagian <code>u[$11]+=$21</code>, dan menampilkan setiap elemen dari <em>array</em> tersebut beserta <em>value</em>-nya <code>for(i in u)printf "%6.4f %s \n", u[i], i</code>,</li>
+<li>Mengolah <mark>Sample-Superstore.csv</mark> menggunakan <code>awk</code> dengan cara menentukan <em>field separator</em> <code>","</code> <code>-F "\"*,\"*"</code>,  menggunakan hasil dari poin a dengan mengoper variabel <code>region</code> ke dalam <code>awk</code> <code>-v a=${region[1]}</code>, melewati kolom header <code>FNR&gt;1</code>, jika wilayah bagian adalah wilayah bagian dari poin a <code>if($13~a)</code> maka digunakan <em>array</em> untuk mengelompokkan keuntungan berdasarkan negara bagian <code>u[$11]+=$NF</code>, dan menampilkan setiap elemen dari <em>array</em> tersebut beserta <em>value</em>-nya <code>for(i in u)printf "%6.4f %s \n", u[i], i</code>,</li>
 <li>Mengurutkan keuntungan dari kecil ke besar menggunakan <code>sort</code> dan <code>-g</code> untuk mengurutkan secara <em>general numerik</em></li>
 <li>Menampilkan dua baris pertama menggunakan <code>head -n2</code></li>
 <li>Hasil yang berupa 2 negara bagian dengan keuntungan terkecil beserta keuntungannya disimpan pada variabel <code>state</code></li>
 </ol>
 <p><em><strong>c.</strong></em> 10 produk dengan keuntungan paling sedikit pada 2 negara bagian dari poin b</p>
-<p><code>prod12=($(awk -F "\"*,\"*" -v a=${state[1]} -v b=${state[3]} 'FNR&gt;1{if($11~a||$11~b)u[$17]+=$21}END{for(i in u)printf "%5.4f in %s\\n\n",u[i],i}' Sample-Superstore.csv | sort -g | head -n10 | nl -s"."))</code></p>
+<p><code>prod12=($(awk -F "\"*,\"*" -v a=${state[1]} -v b=${state[3]} 'FNR&gt;1{if($11~a||$11~b)u[$17]+=$NF}END{for(i in u)printf "%5.4f in %s\\n\n",u[i],i}' Sample-Superstore.csv | sort -g | head -n10 | nl -s"."))</code></p>
 <ol>
-<li>Mengolah <mark>Sample-Superstore.csv</mark> menggunakan <code>awk</code> dengan cara menentukan <em>field separator</em> <code>","</code> <code>-F "\"*,\"*"</code>,  menggunakan hasil dari poin b dengan mengoper variabel <code>state</code> ke dalam <code>awk</code> <code>-v a=${state[1]} -v b=${state[3]}</code>, melewati kolom header <code>FNR&gt;1</code>, jika negara bagian adalah negara bagian dari poin b <code>if($11~a||$11~b)</code> maka digunakan <em>array</em> untuk mengelompokkan keuntungan berdasarkan produk <code>u[$17]+=$21</code>, dan menampilkan setiap elemen dari <em>array</em> tersebut beserta <em>value</em>-nya <code>for(i in u)printf "%5.4f in %s\\n\n",u[i],i</code>,</li>
+<li>Mengolah <mark>Sample-Superstore.csv</mark> menggunakan <code>awk</code> dengan cara menentukan <em>field separator</em> <code>","</code> <code>-F "\"*,\"*"</code>,  menggunakan hasil dari poin b dengan mengoper variabel <code>state</code> ke dalam <code>awk</code> <code>-v a=${state[1]} -v b=${state[3]}</code>, melewati kolom header <code>FNR&gt;1</code>, jika negara bagian adalah negara bagian dari poin b <code>if($11~a||$11~b)</code> maka digunakan <em>array</em> untuk mengelompokkan keuntungan berdasarkan produk <code>u[$17]+=$NF</code>, dan menampilkan setiap elemen dari <em>array</em> tersebut beserta <em>value</em>-nya <code>for(i in u)printf "%5.4f in %s\\n\n",u[i],i</code>,</li>
 <li>Mengurutkan keuntungan dari kecil ke besar menggunakan <code>sort</code> dan <code>-g</code> untuk mengurutkan secara <em>general numerik</em></li>
 <li>Menampilkan sepuluh baris pertama menggunakan <code>head -n10</code></li>
 <li>Menomori per baris menggunakan <code>nl</code> dan menambahkan titik setelah nomor <code>-s"."</code></li>
@@ -194,4 +199,10 @@ for i in "${a[@]}"; do
 done
 mv ./wget.log{,.bak}
 </code></pre>
+<ol>
+<li>Pada mulanya kita melakukan pengurutan data <code>b=($(ls pdkt_kusuma_* | sort))</code> pada direktori yang akan berfungsi sebagai pembanding.</li>
+<li><code>grep 'Location:' wget.log</code> terhadap wget.log yang telah dipotong agar mempermudah pengurutan <code>cut -c32-53</code> <code>tr -d "_"</code> dan dimasukkan kedalam <code>location.log</code>.</li>
+</ol>
+<p>Setelah itu kita mencari gambar gambar yang sama menggunakan awk dan kemudian akan dipilah dengan fungsi for apabila terdeteksi duplikat maka akan dipindahkan (mv <span class="katex--inline">KaTeX parse error: Expected group after '_' at position 25: …icate/duplicate_̲</span>d") dan sisanya akan dipindah pula (mv <span class="katex--inline">KaTeX parse error: Expected group after '_' at position 23: …nangan/kenangan_̲</span>k").</p>
+<p>Terakhir, seluruh log akan dibackup (mv ./wget.log{,.bak}).</p>
 
