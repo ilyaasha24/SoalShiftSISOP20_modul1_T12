@@ -1,8 +1,3 @@
----
-
-
----
-
 <h1 id="soalshiftsisop20_modul1_t12">SoalShiftSISOP20_modul1_T12</h1>
 <p><code>"Repository dibuat untuk memenuhi tugas praktikum mata kuliah sistem operasi tahun 2020."</code></p>
 <p>Anggota :<br>
@@ -54,11 +49,11 @@ laporan tersebut.<br>
 <li>Hasil yang berupa 10 produk dengan keuntungan terkecil beserta keuntungannya disimpan pada variabel <code>prod12</code></li>
 </ol>
 <h4 id="hasil">Hasil</h4>
-<pre><code>Central Region has the lowest profit at 41340.4137
+<pre><code>Central Region has the lowest profit at 39706.3625
 
 2 States with lowest profit in Central region :
- 1.Texas at -20198.3212
- 2.Illinois at -9246.8718
+ 1.Texas at -25729.3563
+ 2.Illinois at -12607.8870
 
 10 Products with lowest profit in both states :
  1.-5552.8392 in GBC DocuBind P400 Electric Binding System
@@ -199,10 +194,3 @@ for i in "${a[@]}"; do
 done
 mv ./wget.log{,.bak}
 </code></pre>
-<ol>
-<li>Pada mulanya kita melakukan pengurutan data <code>b=($(ls pdkt_kusuma_* | sort))</code> pada direktori yang akan berfungsi sebagai pembanding.</li>
-<li><code>grep 'Location:' wget.log</code> terhadap wget.log yang telah dipotong agar mempermudah pengurutan <code>cut -c32-53</code> <code>tr -d "_"</code> dan dimasukkan kedalam <code>location.log</code>.</li>
-</ol>
-<p>Setelah itu kita mencari gambar gambar yang sama menggunakan awk dan kemudian akan dipilah dengan fungsi for apabila terdeteksi duplikat maka akan dipindahkan (mv <span class="katex--inline">KaTeX parse error: Expected group after '_' at position 25: …icate/duplicate_̲</span>d") dan sisanya akan dipindah pula (mv <span class="katex--inline">KaTeX parse error: Expected group after '_' at position 23: …nangan/kenangan_̲</span>k").</p>
-<p>Terakhir, seluruh log akan dibackup (mv ./wget.log{,.bak}).</p>
-
