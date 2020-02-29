@@ -1,3 +1,8 @@
+---
+
+
+---
+
 <h1 id="soalshiftsisop20_modul1_t12">SoalShiftSISOP20_modul1_T12</h1>
 <p><code>"Repository dibuat untuk memenuhi tugas praktikum mata kuliah sistem operasi tahun 2020."</code></p>
 <p>Anggota :<br>
@@ -5,6 +10,20 @@
 <strong>Mohammad Ifaizul Hasan</strong> <code>[05311840000029]</code></p>
 <p>Asisten :<br>
 <strong>Nandha Himawan</strong> <code>[05111740000180]</code></p>
+<h2 id="daftar-isi">Daftar Isi</h2>
+<ol>
+<li><a href="https://github.com/ilyaasha24/SoalShiftSISOP20_modul1_T12#soalshiftsisop20_modul1_t12">Judul</a></li>
+<li><a href="https://github.com/ilyaasha24/SoalShiftSISOP20_modul1_T12#daftar-isi">Daftar Isi</a></li>
+<li><a href="https://github.com/ilyaasha24/SoalShiftSISOP20_modul1_T12#pendahuluan">Pendahuluan</a><br>
+3.1. <a href="https://github.com/ilyaasha24/SoalShiftSISOP20_modul1_T12#prasyarat">Prasyarat</a></li>
+<li><a href="https://github.com/ilyaasha24/SoalShiftSISOP20_modul1_T12#modul-1">Modul 1</a><br>
+4.1. <a href="https://github.com/ilyaasha24/SoalShiftSISOP20_modul1_T12#soal-1">Soal 1</a><br>
+4.1.1. <a href="https://github.com/ilyaasha24/SoalShiftSISOP20_modul1_T12#penyelesaian">Penyelesaian</a><br>
+4.2. <a href="https://github.com/ilyaasha24/SoalShiftSISOP20_modul1_T12#soal-2">Soal 2</a><br>
+4.2.1. <a href="https://github.com/ilyaasha24/SoalShiftSISOP20_modul1_T12#penyelesaian-1">Penyelesaian</a><br>
+4.3. <a href="https://github.com/ilyaasha24/SoalShiftSISOP20_modul1_T12#soal-3">Soal 3</a><br>
+4.3.1. <a href="https://github.com/ilyaasha24/SoalShiftSISOP20_modul1_T12#penyelesaian-2">Penyelesaian</a></li>
+</ol>
 <h2 id="pendahuluan">Pendahuluan</h2>
 <h3 id="prasyarat">Prasyarat</h3>
 <ul>
@@ -197,3 +216,4 @@ b. Mengulang sejumlah elemen direpresentasikan oleh variabel <code>i</code> pada
 <li>Memanggil fungsi <code>fix</code> dengan argumen <code>kenangan</code> dan <code>"${a[*]}"</code>.</li>
 <li>Terakhir mencadangkan log, <code>mv ./wget.log{,.bak}</code>.</li>
 </ol>
+
