@@ -1,8 +1,3 @@
----
-
-
----
-
 <h1 id="soalshiftsisop20_modul1_t12">SoalShiftSISOP20_modul1_T12</h1>
 <p><code>"Repository dibuat untuk memenuhi tugas praktikum mata kuliah sistem operasi tahun 2020."</code></p>
 <p>Anggota :<br>
@@ -216,4 +211,3 @@ b. Mengulang sejumlah elemen direpresentasikan oleh variabel <code>i</code> pada
 <li>Memanggil fungsi <code>fix</code> dengan argumen <code>kenangan</code> dan <code>"${a[*]}"</code>.</li>
 <li>Terakhir mencadangkan log, <code>mv ./wget.log{,.bak}</code>.</li>
 </ol>
-
