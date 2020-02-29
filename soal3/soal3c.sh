@@ -1,9 +1,14 @@
 #!/bin/bash
-#a=($(md5sum kucing* | awk -F "  " '{a[$1]=$2}END{for(i in a)print i, a[i]}' | uniq | awk -F " " '{print $2}' | sort))
-b=($(ls pdkt_kusuma_* | sort))
+fix() {
+  n=$(ls 2>/dev/null -1 -- ./"$1"/"$1"_* | wc -l)
+  for i in $2; do
+    let n+=1
+    mv $i "./$1/$1_$n"
+  done
+}
 grep 'Location:' wget.log | cut -c32-53 | tr -d "_" > location.log
-a=($(paste "./location.log" <(echo -e "pdkt_kusuma_"{1..28}",\n") | tr -d " " | sed 's/\t/,/g' | awk -F "," '{a[$1]=$2}END{for(i in a)print i, a[i]}' | sort -k2 | awk -F " " 'FNR>1{print $2}'))
-#echo ${a[@]} ${b[@]}
+a=($(paste "./location.log" <(echo -e "pdkt_kusuma_"{1..28}"\n" | tr -d " ") | awk -F \\t '{a[$1]=$2}END{for(i in a)if(i)print a[i]}' | sort -k2))
+b=($(ls pdkt_kusuma_* | sort))
 c=()
 for i in "${b[@]}"; do
     skip=
@@ -12,16 +17,7 @@ for i in "${b[@]}"; do
     done
     [[ -n $skip ]] || c+=("$i")
 done
-#echo ${c[@]}
 mkdir -p duplicate kenangan
-d=$(ls -1 "./duplicate/" | wc -l)
-for i in "${c[@]}"; do
-    let d+=1
-    mv $i "./duplicate/duplicate_$d"
-done
-k=$(ls -1 "./kenangan" | wc -l)
-for i in "${a[@]}"; do
-    let k+=1
-    mv $i "./kenangan/kenangan_$k"
-done
+fix duplicate "${c[*]}"
+fix kenangan "${a[*]}"
 mv ./wget.log{,.bak}

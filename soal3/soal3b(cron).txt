@@ -23,12 +23,3 @@
 # 
 # m h  dom mon dow   command
 5 6-23/8 * * 0-5 /home/Documents/izul_punye/soal3.sh
-
-
-
-
-
-
-
-
-

@@ -1,21 +1,10 @@
 #!/bin/bash
-genesis() {
-  for target in "${@}"; do
-    inode=$(stat -c %i "${target}")
-    fs=$(df  --output=source "${target}"  | tail -1)
-    crtime=$(sudo debugfs -R 'stat <'"${inode}"'>' "${fs}" 2>/dev/null |
-    grep -oP 'crtime.*--\s*\K.*')
-    printf "%s\t%s\n" "${target}" "${crtime}"
-  done
-}
-chr() {
-  printf \\$(printf '%03o' $1)
-}
-#main
-file=$(echo $1 )
-file=$(echo ${file%%.*} | tr -dc 'a-zA-Z')
-crtime=($(genesis "$file.txt"))
-crhour=$(echo ${crtime[4]} | head -c2)
-shift=$(chr "$(($crhour + 65))")-ZA-$(chr "$(($crhour + 64))")$(chr "$(($crhour + 97))")-za-$(chr "$(($crhour + 96))")
-CC=$(echo $file | tr A-Za-z $shift)
-mv "$file.txt" "$CC.txt"
+chr() { printf \\$(printf '%03o' $1); }
+file=$(echo $@)
+file=$(echo ${file%%.*} | tr -dc A-Za-z)
+cr=$(sudo debugfs -R 'stat <'"$(stat -c %i $file.txt)"'>' "$(df --output=source $file.txt | tail -n1)" 2>/dev/null | grep -oP 'crtime.*--\s*\K.*' | cut -c12-13)
+if [[ $cr != 00 ]]; then
+  shift=$(chr $(($cr + 65)))-ZA-$(chr $(($cr + 64)))$(chr $(($cr + 97)))-za-$(chr $(($cr + 96)))
+  CC=$(echo $file | tr $shift A-Za-z)
+  mv "$file.txt" "$CC.txt"
+fi
